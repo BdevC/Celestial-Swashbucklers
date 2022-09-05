@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/action_area.gd" type="Script" id=1]
+[ext_resource path="res://scenes/playerShip.tscn" type="PackedScene" id=3]
+
+[sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.204931, 1, 9.287 )
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0.784314, 0.501961 )
+
+[sub_resource type="CubeMesh" id=11]
+material = SubResource( 10 )
+size = Vector3( 0.25, 0.75, 19 )
+
+[sub_resource type="BoxShape" id=12]
+extents = Vector3( 5.3271, 1, 0.165652 )
+
+[sub_resource type="CubeMesh" id=13]
+material = SubResource( 10 )
+size = Vector3( 10, 0.75, 0.25 )
+
+[node name="actionArea" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="playerShip" parent="." groups=["actionAreaVars"] instance=ExtResource( 3 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.69419, 0 )
+axis_lock_motion_y = true
+move_lock_y = true
+
+[node name="LeftBoarder" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1242, 4, -1.3222e-06 )
+
+[node name="CollisionShape" type="CollisionShape" parent="LeftBoarder"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="LeftBoarder"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="rightBoarder" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1252, 4, 1.32229e-06 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rightBoarder"]
+shape = SubResource( 9 )
+
+[node name="MeshInstance" type="MeshInstance" parent="rightBoarder"]
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="frontBoarder" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69579e-06, 4, 19.3976 )
+
+[node name="CollisionShape" type="CollisionShape" parent="frontBoarder"]
+shape = SubResource( 12 )
+
+[node name="frontRear" type="MeshInstance" parent="frontBoarder/CollisionShape"]
+mesh = SubResource( 13 )
+skeleton = NodePath("../../../rightBoarder")
+material/0 = null
+
+[node name="rearBoarder" type="StaticBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69306e-06, 4, -19.3663 )
+
+[node name="CollisionShape" type="CollisionShape" parent="rearBoarder"]
+shape = SubResource( 12 )
+
+[node name="frontRear" type="MeshInstance" parent="rearBoarder/CollisionShape"]
+mesh = SubResource( 13 )
+skeleton = NodePath("../../../rightBoarder")
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -1, -2.26267e-08, -9.04017e-08, -4.52534e-08, 0.965926, 0.258819, 8.14651e-08, 0.258819, -0.965926, -12, 16, -37.8189 )
+far = 1000.0

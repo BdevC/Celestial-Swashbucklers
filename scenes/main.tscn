@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/formationLarge_rock.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/action_area.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/playerShipPathFollow.gd" type="Script" id=5]
+
+[sub_resource type="Curve3D" id=2]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.000367522, 0, 0.000230461, 0, 0, 0, 0, 0, 0, 256.754, -0.0507202, -0.823036, 0, 0, 0, 0, 0, 0, 575.35, -0.050705, -0.0274448, 0, 0, 0, 0, 0, 0, 895.34, -0.0506897, -0.337275 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
+}
+
+[node name="main" type="Spatial"]
+
+[node name="Path" type="Path" parent="."]
+curve = SubResource( 2 )
+
+[node name="ShipFollow" type="PathFollow" parent="Path" groups=["actionAreaVars"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000367522, 0, 0.000230461 )
+rotation_mode = 1
+script = ExtResource( 5 )
+
+[node name="actionArea" parent="Path/ShipFollow" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+
+[node name="formationLarge_rock" parent="." instance=ExtResource( 1 )]
+transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, -90.9819, 0, 0 )
+
+[node name="formationLarge_rock2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -100, 0, -4.37114e-06, 0, 25, 0, 8.74228e-06, 0, -50, -90.982, 0, 45 )

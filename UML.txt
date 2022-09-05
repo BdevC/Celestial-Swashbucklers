@@ -1,0 +1,79 @@
+from https://yuml.me/
+
+[Customer]->[Order]               // Association
+[Customer]<>->[Order]             // Aggregation
+[Customer]++->[Order]             // Composition
+[Customer]1-0..1>[Order]          // Cardinality
+[Customer]1-0..orders 1>[Order]   // Assoc Labels
+[Customer]-.-[note: DAO]          // Notes
+[Customer]^[Member]               // Inheritance
+[Customer|name;address|save()]    // Properties
+[≪IDisposable≫;Customer]          // Interface
+[Customer|var arr［］ ]            // Brackets
+[Customer {bg:green}]             // Colour
+
+
+
+
+// SomeDay [Defender]^[HumanPlayer]
+// [Ship]++->[Crew]
+// [Ship]++->[Cannons]
+
+
+[Game]++->2[Player]
+
+[HumanPlayer]^[Player]
+[ComputerPlayer]^[Player]
+
+[Ship]1^[HumanPlayer]
+[Defender]^[ComputerPlayer]
+
+[Game]++->[World]
+[Game]++->[UI]
+[Game]++->[Keyboard/Mouse Input]
+
+[Ship]++->[Body]
+[Ship]++->[shipHealth]
+
+
+[Defender]++->[Base]
+[Defender]<>Creates->[AttackCraft]
+[Defender]++->[resourceCount]
+
+[AttackCraft]^[Fighter0]
+[AttackCraft]^[Fighter1]
+
+[AttackCraft]<Attack>[Ship]
+[AttackCraft]++->[weapon]
+[AttackCraft]++->[health]
+[AttackCraft]++->[ammo]
+
+
+
+[Base]<Attack>[Ship]
+[Base]++->[Base Health]
+
+[World]++->[ShipBoundary]
+[World]++->[music]
+[shipHealth]changes->[music]
+[ShipBoundary]Restricts->[Ship]
+[World]<>->[Ship]
+[World]<>->[AttackCraft]
+[World]<>->[Base]
+
+[Base]ReArms->[AttackCraft]
+
+[UI]++->[HealthIndicator]
+[UI]++->[Target]
+[UI]++->[MainMenu]
+[HealthIndicator]Shows ->[shipHealth]
+
+[Keyboard/Mouse Input]++->[w]Moves Away->[Ship]
+[Keyboard/Mouse Input]++->[a]Moves Left->[Ship]
+[Keyboard/Mouse Input]++->[s]Moves Closer->[Ship]
+[Keyboard/Mouse Input]++->[d]Moves Right->[Ship]
+[Keyboard/Mouse Input]++->[Space]Toggle high / low->[Ship]
+[Keyboard/Mouse Input]++->[leftClick]Fire Cannons->[Ship]
+[Ship]Fires Cannons at->[Target]
+
+
