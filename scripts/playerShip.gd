@@ -69,3 +69,4 @@ func _physics_process(delta):
 			var obstacle = collision.collider
 			obstacle.impact()
 			#velocity.y = bounce_impulse
+			_on_playerShip_body_entered(self)

@@ -26,12 +26,16 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 script = ExtResource( 1 )
 
 [node name="playerShip" parent="." groups=["actionAreaVars"] instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -0.69419, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 axis_lock_motion_y = true
 move_lock_y = true
 
+[node name="Camera" type="Camera" parent="playerShip"]
+transform = Transform( -0.333333, -7.65813e-15, -2.91409e-08, -5.9212e-15, 0.333333, -1.98682e-08, 2.91409e-08, -1.98682e-08, -0.333333, 0, 1.667, -17 )
+far = 1000.0
+
 [node name="LeftBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1242, 4, -1.3222e-06 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.75, -15.1242, 4, -1.3222e-06 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LeftBoarder"]
 shape = SubResource( 9 )
@@ -41,7 +45,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="rightBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1252, 4, 1.32229e-06 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.75, 15.1252, 4, 1.32229e-06 )
 
 [node name="CollisionShape" type="CollisionShape" parent="rightBoarder"]
 shape = SubResource( 9 )
@@ -51,7 +55,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="frontBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69579e-06, 4, 19.3976 )
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, -1.69579e-06, 4, 19.3976 )
 
 [node name="CollisionShape" type="CollisionShape" parent="frontBoarder"]
 shape = SubResource( 12 )
@@ -62,7 +66,7 @@ skeleton = NodePath("../../../rightBoarder")
 material/0 = null
 
 [node name="rearBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69306e-06, 4, -19.3663 )
+transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, 1.69306e-06, 4, -19.3663 )
 
 [node name="CollisionShape" type="CollisionShape" parent="rearBoarder"]
 shape = SubResource( 12 )
@@ -71,7 +75,3 @@ shape = SubResource( 12 )
 mesh = SubResource( 13 )
 skeleton = NodePath("../../../rightBoarder")
 material/0 = null
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -1, -2.26267e-08, -9.04017e-08, -4.52534e-08, 0.965926, 0.258819, 8.14651e-08, 0.258819, -0.965926, -12, 16, -37.8189 )
-far = 1000.0

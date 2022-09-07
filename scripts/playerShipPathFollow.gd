@@ -1,8 +1,7 @@
 extends PathFollow
 
 func _process(delta):
-	offset += 0.2
-	print(self.rotation)
+	offset += 0.4
 	get_tree().call_group("actionAreaVars", "y_rotation_update", rotation.y)
 
 
