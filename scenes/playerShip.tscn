@@ -8,7 +8,7 @@
 [ext_resource path="res://art/materials/wood.material" type="Material" id=6]
 
 [sub_resource type="BoxShape" id=10]
-extents = Vector3( 1.5685, 1.26213, 3.34757 )
+extents = Vector3( 1.36398, 2.13399, 0.199589 )
 
 [sub_resource type="ArrayMesh" id=11]
 resource_name = "ship_dark_ship_dark_8angles"
@@ -281,7 +281,7 @@ surfaces/1 = {
 script = ExtResource( 3 )
 
 [node name="Hull" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2443, -0.783238 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65622, -2.25567 )
 shape = SubResource( 10 )
 
 [node name="ship_dark_8angles2" type="MeshInstance" parent="."]

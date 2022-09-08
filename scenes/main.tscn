@@ -6,30 +6,41 @@
 
 [sub_resource type="Curve3D" id=2]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0.305488, 5.5782, 0.000244141, -30.221, -0.436249, 0, 30.221, 0.436249, 0, 276.139, 8.96397, -0.823029, -30.3403, 0.261826, 0, 30.3403, -0.261826, 0, 390.701, 22.9346, -0.823029, -9.49054, 0.028307, 0, 9.49054, -0.028307, 0, 702.678, 22.1406, -0.822998, -44.5666, 1.97523, 0, 44.5666, -1.97523, 0, 875.204, 16.6643, -0.822968, 0, 0, 0, 0, 0, 0, 1157.92, 8.53394, -0.822968, 0, 0, 0, 0, 0, 0, 1327.07, 9.49909, -0.822937 ),
-"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0 )
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.463707, -0.179701, 0.000244141, -31.1309, -0.299761, 0, 31.1309, 0.299761, 0, 291.581, 3.25958, -0.823029, -33.6457, 0.178967, 0, 33.6457, -0.178967, 0, 403.91, 13.1725, -0.823029, -9.49054, 0.028307, 0, 9.49054, -0.028307, 0, 694.947, 13.0649, -0.822998, -15.6559, 0.313117, 0, 15.6559, -0.313117, 0, 737.768, 8.51037, -0.822998, -25.5364, 0.228827, 0, 25.5364, -0.228827, 0, 869.279, 9.51013, -0.822998, -18.0565, 0, 0, 18.0565, 0, 0, 933.295, 2.80229, -0.822968, 0, 0, 0, 0, 0, 0, 1157.73, 3.33935, -0.822968, 0, 0, 0, 0, 0, 0, 1327.1, 0.549257, -0.822937 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="main" type="Spatial"]
 
 [node name="Path" type="Path" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 curve = SubResource( 2 )
 
 [node name="ShipFollow" type="PathFollow" parent="Path" groups=["actionAreaVars"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.305488, 5.5782, 0.000244141 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.463707, -0.179701, 0.000244141 )
 rotation_mode = 1
 loop = false
 script = ExtResource( 5 )
 
 [node name="actionArea" parent="Path/ShipFollow" instance=ExtResource( 4 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 12, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 0 )
 
 [node name="formationLarge_rock" parent="." instance=ExtResource( 1 )]
 transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 6.0181, 0, -38 )
 
 [node name="formationLarge_rock3" parent="." instance=ExtResource( 1 )]
 transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 98.0181, 0, 22.5307 )
+
+[node name="formationLarge_rock4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 98.0181, 0, -29.4693 )
+
+[node name="formationLarge_rock5" parent="." instance=ExtResource( 1 )]
+transform = Transform( -100, 0, -4.37114e-06, 0, 25, 0, 8.74228e-06, 0, -50, 190.7, -18.8482, -1.68677 )
+
+[node name="formationLarge_rock6" parent="." instance=ExtResource( 1 )]
+transform = Transform( 24.1845, 6.04612, 46.9846, 70.7107, -17.6777, 0, 66.4463, 16.6116, -17.101, 274.176, 28.279, -48.8044 )
+
+[node name="formationLarge_rock7" parent="." instance=ExtResource( 1 )]
+transform = Transform( -24.1845, -6.04612, -46.9846, 70.7107, -17.6777, 0, -66.4463, -16.6116, 17.101, 274.176, 29.0518, 37.8578 )
 
 [node name="formationLarge_rock2" parent="." instance=ExtResource( 1 )]
 transform = Transform( -100, 0, -7.54979e-06, 0, 50, 0, 1.50996e-05, 0, -50, -4.982, 0, 37 )

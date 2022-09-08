@@ -48,13 +48,13 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_back"):
 		# Notice how we are working with the vector's x and z axes.
 		# In 3D, the XZ plane is the ground plane.
-		direction.x -= 1
+		direction.y += 1
 	if Input.is_action_pressed("move_forward"):
-		direction.x += 1
+		direction.y -= 1
 	direction = direction.rotated(Vector3.UP, _sceneRotation).normalized()
 
 	# Ground velocity
-	velocity.x = direction.x * speed
+	velocity.y = direction.y * speed
 	velocity.z = direction.z * speed
 	# Vertical velocity
 	#velocity.y -= fall_acceleration * delta
