@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/playerShipPathFollow.gd" type="Script" id=1]
+[ext_resource path="res://scenes/formationLarge_rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/action_area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/level_gui.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Curve3D" id=2]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.463707, -0.179701, 0.000244141, -31.1309, -0.299761, 0, 31.1309, 0.299761, 0, 291.581, 3.25958, -0.823029, -33.6457, 0.178967, 0, 33.6457, -0.178967, 0, 403.91, 13.1725, -0.823029, -9.49054, 0.028307, 0, 9.49054, -0.028307, 0, 694.947, 13.0649, -0.822998, -15.6559, 0.313117, 0, 15.6559, -0.313117, 0, 737.768, 8.51037, -0.822998, -25.5364, 0.228827, 0, 25.5364, -0.228827, 0, 869.279, 9.51013, -0.822998, -18.0565, 0, 0, 18.0565, 0, 0, 933.295, 2.80229, -0.822968, 0, 0, 0, 0, 0, 0, 1157.73, 3.33935, -0.822968, 0, 0, 0, 0, 0, 0, 1327.1, 0.549257, -0.822937 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="main" type="Spatial"]
+
+[node name="Path" type="Path" parent="."]
+curve = SubResource( 2 )
+
+[node name="ShipFollow" type="PathFollow" parent="Path" groups=["actionAreaVars"]]
+transform = Transform( 0.999021, 0, -0.0442438, 0, 1, 0, 0.0442438, 0, 0.999021, 1300.31, 0.99064, -0.822942 )
+offset = 1305.78
+rotation_mode = 1
+loop = false
+script = ExtResource( 1 )
+
+[node name="actionArea" parent="Path/ShipFollow" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 0 )
+
+[node name="formationLarge_rock" parent="." instance=ExtResource( 2 )]
+transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 6.0181, 0, -38 )
+
+[node name="formationLarge_rock3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 98.0181, 0, 22.5307 )
+
+[node name="formationLarge_rock4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 100, 0, 0, 0, 25, 0, 0, 0, 50, 98.0181, 0, -29.4693 )
+
+[node name="formationLarge_rock5" parent="." instance=ExtResource( 2 )]
+transform = Transform( -100, 0, -4.37114e-06, 0, 25, 0, 8.74228e-06, 0, -50, 190.7, -18.8482, -1.68677 )
+
+[node name="formationLarge_rock2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -100, 0, -7.54979e-06, 0, 50, 0, 1.50996e-05, 0, -50, -4.982, 0, 37 )
+
+[node name="GroundVariation" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1000, 0, 0, 0, 14, 0, 0, 0, 200, 661, 0, -22 )
+
+[node name="LeftSide" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1000, 0, 0, 0, 100, 0, 0, 0, 100, 661.016, 0, -64.9193 )
+
+[node name="rightSide" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1000, 0, -8.74228e-06, 0, 100, 0, 8.74228e-05, 0, -100, 707.584, 0, 79.2529 )
+
+[node name="ceiling" parent="." instance=ExtResource( 2 )]
+transform = Transform( 800, 0, 0, 0, -10, 3.01992e-05, 0, -1.50996e-06, -200, 739.173, 50, 31.554 )
+
+[node name="formationLarge_rock6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 125, 0, 0, 0, 35, 0, 0, 0, 125, 1000, 1.88353, -45.6223 )
+
+[node name="formationLarge_rock7" parent="." instance=ExtResource( 2 )]
+transform = Transform( -125, 0, -1.09278e-05, 0, 35, 0, 1.09278e-05, 0, -125, 1216.62, 1.88353, 51.1587 )
+
+[node name="level_gui" parent="." instance=ExtResource( 4 )]
+
+[connection signal="end_level" from="Path/ShipFollow" to="level_gui" method="_on_ShipFollow_end_level"]

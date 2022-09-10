@@ -37,7 +37,7 @@ current = true
 far = 1000.0
 
 [node name="LeftBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.124, 9, 0 )
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, -33.5756, 9, -1.61309e-06 )
 
 [node name="CollisionShape" type="CollisionShape" parent="LeftBoarder"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53674e-07, 3.00529, 9.96877 )
@@ -48,7 +48,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="rightBoarder" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.125, 9, 0 )
+transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 33.9836, 9, 1.64867e-06 )
 
 [node name="CollisionShape" type="CollisionShape" parent="rightBoarder"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.03857, 10 )
@@ -59,7 +59,7 @@ mesh = SubResource( 11 )
 material/0 = null
 
 [node name="topBoarder" type="StaticBody" parent="."]
-transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, -1.45334e-06, 25.3198, 16.6243 )
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, -1.45334e-06, 29.1281, 16.6243 )
 
 [node name="CollisionShape" type="CollisionShape" parent="topBoarder"]
 shape = SubResource( 12 )
@@ -70,7 +70,7 @@ skeleton = NodePath("../../../rightBoarder")
 material/0 = null
 
 [node name="bottomBoarder" type="StaticBody" parent="."]
-transform = Transform( 1.75, 0, 0, 0, 1, 0, 0, 0, 1, -1.4533e-06, -1.60327, 16.6239 )
+transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, -1.4533e-06, -14.2209, 16.6239 )
 
 [node name="CollisionShape" type="CollisionShape" parent="bottomBoarder"]
 shape = SubResource( 12 )

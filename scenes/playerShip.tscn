@@ -396,3 +396,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88765e-15, 2.77592, 1.05056
 mesh = SubResource( 19 )
 material/0 = null
 material/1 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.822452, -0.843507 )
+omni_range = 25.0
