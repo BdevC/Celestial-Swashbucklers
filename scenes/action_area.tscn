@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/action_area.gd" type="Script" id=1]
 [ext_resource path="res://scenes/playerShip.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve3D" id=1]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -302.345, 15.7534, -5.69495e-05, -105.401, -0.265504, -9.21443e-06, 105.401, 0.265504, 9.21443e-06, 0.264094, 6.82631, 2.30878e-08, 0, 0, 0, 0, 0, 0, 426.083, 15.2212, 6.77669e-05 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
 
 [node name="actionArea" type="Spatial"]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -15,5 +21,12 @@ speed = 30
 
 [node name="Camera" type="Camera" parent="playerShip"]
 transform = Transform( 0.333333, 0, 0, 0, 0.086273, 0.321975, 0, -0.321975, 0.086273, 2.72223e-06, 26.2165, -0.505283 )
-current = true
 far = 1000.0
+
+[node name="attack_path" type="Path" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1837e-06, 0, 24.9786 )
+curve = SubResource( 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76525e-06, 0, 111.701 )
+current = true
