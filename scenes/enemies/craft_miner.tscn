@@ -65,10 +65,7 @@ transform = Transform( 2.98122e-08, 0, -2.5, 0, 2.5, 0, 2.5, 0, 2.98122e-08, 0, 
 script = ExtResource( 5 )
 attack_speed = 0.5
 
-[node name="AttackCraft" type="RigidBody" parent="."]
-gravity_scale = 0.0
-can_sleep = false
-linear_velocity = Vector3( 0, -5, 0 )
+[node name="AttackCraft" type="KinematicBody" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="AttackCraft"]
 shape = SubResource( 2 )

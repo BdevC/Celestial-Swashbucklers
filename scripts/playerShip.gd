@@ -11,10 +11,12 @@ var hitCount = 0
 #var _path_follow: PathFollow
 #action area information this could be written better
 var _sceneRotation: float
+var cannon_ball = preload("res://scenes/player/cannonball.tscn")
 
 func _ready():
 	print("Starting hit count: ")
 	print(hitCount)
+	$"ship_dark_8angles2/cannon_left/cannon_left2/ballStart".add_child(cannon_ball.instance())
 
 func y_rotation_update(rotation):
 	_sceneRotation = rotation

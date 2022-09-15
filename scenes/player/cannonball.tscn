@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://art/materials/iron.material" type="Material" id=1]
+[ext_resource path="res://scenes/player/cannonball.gd" type="Script" id=2]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id=2]
+material = ExtResource( 1 )
+radius = 0.25
+height = 0.5
+
+[node name="Spatial" type="Spatial"]
+
+[node name="cannonball" type="RigidBody" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="cannonball"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="cannonball"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.75829 )
