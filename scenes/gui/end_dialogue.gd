@@ -1,14 +1,19 @@
 extends PopupPanel
 
-
+signal yes()
+signal no()
 
 func _on_YES_button_up():
-	$Label2.text = "YES PRESSED"
+	emit_signal("yes")
+	self.hide()
+	print("YES PRESSED")
 
 
 func _on_NO_button_up():
-	$Label2.text = "NO PRESSED"
+	get_tree().quit()
+	print("NO PRESSED")
 
 
-func _on_level_gui_end_of_level():
+func _on_level_gui_end_of_level(hit_count):
+	$hitcountinfo.text = "You were hit " + String(hit_count) + " times."
 	self.show()

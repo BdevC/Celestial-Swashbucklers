@@ -11,3 +11,5 @@ script = ExtResource( 2 )
 [node name="you_win" parent="." instance=ExtResource( 1 )]
 
 [connection signal="end_of_level" from="." to="you_win" method="_on_level_gui_end_of_level"]
+[connection signal="no" from="you_win" to="." method="_on_you_win_no"]
+[connection signal="yes" from="you_win" to="." method="_on_you_win_yes"]

@@ -5,7 +5,9 @@ signal fire_right()
 
 
 # How fast the player moves in meters per second.
-export var speed = 14
+export var forward_speed = 20
+export var lateral_speed = 30
+export var min_forward_speed = 1.5
 # The downward acceleration when in the air, in meters per second squared.
 #export var fall_acceleration = 75
 
@@ -25,12 +27,13 @@ func _ready():
 func y_rotation_update(rotation):
 	_sceneRotation = rotation
 
+func incrementHitCount():
+	hitCount += 1
 
 
 func _on_playerShip_body_entered(body):
-	hitCount += 1
-	print("new hit count: ")
-	print(hitCount)
+	incrementHitCount()
+	
 
 # Called during every input event.
 #func _unhandled_input(event):
@@ -41,6 +44,7 @@ func _on_playerShip_body_entered(body):
 #				print(get_process_delta_time())
 
 func _physics_process(delta):
+	# TODO MAKE MOVEMENT RELATIVE TO SHIP
 	if Input.is_action_just_pressed("fireLeft"):
 		emit_signal("fire_left")
 	if Input.is_action_just_pressed("fireRight"):
@@ -60,10 +64,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_forward"):
 		direction.x -= 1
 	direction = direction.rotated(Vector3.UP, _sceneRotation).normalized()
-
+	
+	direction.x += min_forward_speed
+	
 	# Ground velocity
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
+	velocity.x = direction.x * forward_speed
+	velocity.z = direction.z * lateral_speed
 	# Vertical velocity
 	#velocity.y -= fall_acceleration * delta
 	# Moving the character
@@ -79,3 +85,4 @@ func _physics_process(delta):
 			#velocity.y = bounce_impulse
 			_on_playerShip_body_entered(self)
 	
+

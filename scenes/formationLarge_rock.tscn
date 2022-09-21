@@ -73,3 +73,5 @@ shape = SubResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.77, 0, 0, 0, 1, 0.704817, 2.05745e-14, -0.354503 )
 shape = SubResource( 5 )
+
+[connection signal="body_entered" from="." to="." method="_on_formationLarge_rock_body_entered"]

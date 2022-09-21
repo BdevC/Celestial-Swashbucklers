@@ -1,40 +1,30 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scripts/playerShipPathFollow.gd" type="Script" id=1]
+[ext_resource path="res://scenes/playerShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/formationLarge_rock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/action_area.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/levelzero.gd" type="Script" id=3]
 [ext_resource path="res://scenes/gui/level_gui.tscn" type="PackedScene" id=4]
 [ext_resource path="res://art/meshlibraries/levelzero.meshlib" type="MeshLibrary" id=5]
 [ext_resource path="res://art/materials/sand.material" type="Material" id=6]
-[ext_resource path="res://scenes/enemies/attack_wave_generator.tscn" type="PackedScene" id=7]
-
-[sub_resource type="Curve3D" id=2]
-_data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.463707, -0.179701, 0.000244141, 0, 0, 0, 0, 0, 0, 1362.56, -0.179703, 16.3119 ),
-"tilts": PoolRealArray( 0, 0 )
-}
+[ext_resource path="res://scenes/areas/attack_wave_generator.tscn" type="PackedScene" id=7]
 
 [sub_resource type="PlaneMesh" id=3]
 material = ExtResource( 6 )
 size = Vector2( 1500, 200 )
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 12.8547, 22.0074, 121.811 )
+
 [node name="main" type="Spatial"]
-
-[node name="Path" type="Path" parent="."]
-curve = SubResource( 2 )
-
-[node name="ShipFollow" type="PathFollow" parent="Path" groups=["actionAreaVars"]]
-transform = Transform( 0.999021, 0, -0.0442438, 0, 1, 0, 0.0442438, 0, 0.999021, 366.408, -0.179701, 4.3907 )
-offset = 447.39
-rotation_mode = 1
-loop = false
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 
 [node name="LeftSide" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1000, 0, 0, 0, 100, 0, 0, 0, 100, 661.016, 0, -124.956 )
+max_player_collisions = 500
 
 [node name="rightSide" parent="." instance=ExtResource( 2 )]
 transform = Transform( -1000, 0, -8.74228e-06, 0, 100, 0, 8.74228e-05, 0, -100, 707.584, 0, 143.277 )
+max_player_collisions = 500
 
 [node name="level_gui" parent="." instance=ExtResource( 4 )]
 
@@ -58,8 +48,33 @@ material/0 = null
 
 [node name="attack_wave_generator" parent="." instance=ExtResource( 7 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 480.292, 9.40387, 0 )
+waveSpeed = 2500.0
 
-[node name="actionArea" parent="." groups=["actionAreaVars"] instance=ExtResource( 3 )]
-transform = Transform( -0.0442438, 0, -0.999021, 0, 1, 0, 0.999021, 0, -0.0442438, 366.408, 2.8203, 4.3907 )
+[node name="attack_wave_generator2" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 489.292, 9.40387, 0 )
+waveSpeed = 2400.0
 
-[connection signal="end_level" from="Path/ShipFollow" to="level_gui" method="_on_ShipFollow_end_level"]
+[node name="attack_wave_generator3" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 500.292, 9.40387, 0 )
+waveSpeed = 2300.0
+
+[node name="attack_wave_generator4" parent="." instance=ExtResource( 7 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 515.292, 9.40387, 0 )
+waveSpeed = 2200.0
+
+[node name="playerShip" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 372.963, 5, 0 )
+axis_lock_motion_y = true
+move_lock_y = true
+
+[node name="level_end" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1387.08, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="level_end"]
+shape = SubResource( 4 )
+
+[node name="ShipStartPosition" type="Position3D" parent="."]
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, -86.8869, 5, -1.81899e-12 )
+
+[connection signal="restart_level" from="level_gui" to="." method="_on_level_gui_restart_level"]
+[connection signal="body_entered" from="level_end" to="level_gui" method="_on_level_end_body_entered"]

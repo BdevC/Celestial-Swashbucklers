@@ -408,5 +408,10 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0334
 [node name="starboard_cannon" parent="." instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.04615, 1.27444, -1.68542 )
 
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.333333, 0, 0, 0, 0.086273, 0.321975, 0, -0.321975, 0.086273, 2.72223e-06, 26.2165, -0.505283 )
+current = true
+far = 1000.0
+
 [connection signal="fire_left" from="." to="port_cannon" method="_on_playerShip_fire_left"]
 [connection signal="fire_right" from="." to="starboard_cannon" method="_on_playerShip_fire_right"]

@@ -40,7 +40,9 @@ func _physics_process(delta):
 func _on_AttackCraft_body_entered(body):
 	axis_lock_linear_y = false
 	$DeathTimer.start()
-
+	if body.is_in_group("Player"):
+		body.incrementHitCount()
+	print("attack_craft hit")
 
 func _on_DeathTimer_timeout():
 	queue_free()
