@@ -7,12 +7,12 @@ signal end_level()
 
 func _physics_process(delta):
 	offset += level_progress
-	
-	if (unit_offset >= level_end): # && !main.has_node("YouWin")):
-		emit_signal("end_level")	
-		
-	get_tree().call_group("actionAreaVars", "y_rotation_update", rotation.y)
-	
+#
+#	if (unit_offset >= level_end): # && !main.has_node("YouWin")):
+#		emit_signal("end_level")	
+#
+#	get_tree().call_group("actionAreaVars", "y_rotation_update", rotation.y)
+#
 
 
 

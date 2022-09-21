@@ -14,7 +14,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0
 script = ExtResource( 1 )
 
 [node name="playerShip" parent="." groups=["actionAreaVars"] instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -2.04863e-06, 0, 23.4336 )
+transform = Transform( 3, 0, 9.53595e-08, 0, 3, 0, -9.53595e-08, 0, 3, 0, 0, 0 )
 axis_lock_motion_y = true
 move_lock_y = true
 speed = 30
@@ -25,5 +25,4 @@ current = true
 far = 1000.0
 
 [node name="attack_path" type="Path" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1837e-06, 0, 24.9786 )
 curve = SubResource( 1 )

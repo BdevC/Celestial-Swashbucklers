@@ -1,5 +1,9 @@
 extends KinematicBody
 
+signal fire_left()
+signal fire_right()
+
+
 # How fast the player moves in meters per second.
 export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -11,12 +15,12 @@ var hitCount = 0
 #var _path_follow: PathFollow
 #action area information this could be written better
 var _sceneRotation: float
-var cannon_ball = preload("res://scenes/player/cannonball.tscn")
 
 func _ready():
 	print("Starting hit count: ")
 	print(hitCount)
-	$"ship_dark_8angles2/cannon_left/cannon_left2/ballStart".add_child(cannon_ball.instance())
+
+
 
 func y_rotation_update(rotation):
 	_sceneRotation = rotation
@@ -36,9 +40,11 @@ func _on_playerShip_body_entered(body):
 #				
 #				print(get_process_delta_time())
 
-
-
 func _physics_process(delta):
+	if Input.is_action_just_pressed("fireLeft"):
+		emit_signal("fire_left")
+	if Input.is_action_just_pressed("fireRight"):
+		emit_signal("fire_right")
 	# We create a local variable to store the input direction.
 	var direction = Vector3.ZERO
 
@@ -62,7 +68,7 @@ func _physics_process(delta):
 	#velocity.y -= fall_acceleration * delta
 	# Moving the character
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
+
 	for index in range(get_slide_count()):
 		# We check every collision that occurred this frame.
 		var collision = get_slide_collision(index)
@@ -72,3 +78,4 @@ func _physics_process(delta):
 			#obstacle.impact()
 			#velocity.y = bounce_impulse
 			_on_playerShip_body_entered(self)
+	
