@@ -47,5 +47,4 @@ func _ready():
 
 
 func _on_Timer_timeout():
-	print("free ball")
 	queue_free()

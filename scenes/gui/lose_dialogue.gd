@@ -13,6 +13,7 @@ func _on_NO_button_up():
 	print("NO PRESSED")
 
 
-func _on_level_gui_end_of_level(hit_count):
-	$hitcountinfo.text = "You were hit " + String(hit_count) + " times."	# super brittle - fix it.
+func _on_level_gui_player_lost(hit_count):
+	$hitcountinfo.text = "You were hit " + String(8 - hit_count) + " times."	# super brittle - fix it.
 	self.show()
+

@@ -2,25 +2,30 @@ extends KinematicBody
 
 signal fire_left()
 signal fire_right()
+signal decrementHealth()
+signal update_ammo_count(count)
 
 
 # How fast the player moves in meters per second.
 export var forward_speed = 20
 export var lateral_speed = 30
 export var min_forward_speed = 1.5
+export var min_movement_distance = 0.1
+export var startingAmmoCount:int = 16
+var ammoCount:int = startingAmmoCount
 # The downward acceleration when in the air, in meters per second squared.
 #export var fall_acceleration = 75
 
 var velocity = Vector3.ZERO
 var hitCount = 0
+var isPaused:bool = false
 
 #var _path_follow: PathFollow
 #action area information this could be written better
 var _sceneRotation: float
 
 func _ready():
-	print("Starting hit count: ")
-	print(hitCount)
+	emit_signal("update_ammo_count", ammoCount)
 
 
 
@@ -28,7 +33,10 @@ func y_rotation_update(rotation):
 	_sceneRotation = rotation
 
 func incrementHitCount():
-	hitCount += 1
+	if ($safeTimer.is_stopped()):
+		#tell system the ship has lost a hitpoint and start timer
+		emit_signal("decrementHealth")
+		$safeTimer.start(0.5) #reset timer give user a chance to move away
 
 
 func _on_playerShip_body_entered(body):
@@ -42,13 +50,65 @@ func _on_playerShip_body_entered(body):
 #			if Input.is_action_pressed("move_back"):
 #				
 #				print(get_process_delta_time())
+const POSITION_SPACE:int = 300
+var positionIndex:int = POSITION_SPACE
+var stoppingIndex:int = 0
+var positionHistory:PoolVector3Array = PoolVector3Array()
+var count:int = 0
+var isTrackingCounts:bool = true
+var lastPosition:Vector3 = Vector3.ZERO
+var isBackTracking:bool = false
+
+func isShipMoving() -> bool:
+	if (isBackTracking):
+		return false
+	var xdist:float = abs(global_transform.origin.x - lastPosition.x)
+	var ydist:float = abs(global_transform.origin.z - lastPosition.z)
+	var flatDist = sqrt(pow(xdist,2) + pow(ydist,2))
+	lastPosition = global_transform.origin
+	if flatDist > min_movement_distance:
+		return true
+	else:
+		stoppingIndex = 0 if positionHistory.size() < POSITION_SPACE + 1 else positionIndex
+		isBackTracking = true
+		return false
+
+func updatePositionHistory():
+	if (positionHistory.size() < POSITION_SPACE + 1):
+		positionHistory.push_back(global_transform.origin)
+		positionIndex = positionHistory.size() -1
+	else:
+		positionHistory[positionIndex] = global_transform.origin
+		positionIndex += 1
+	if ( positionIndex >= POSITION_SPACE ) :
+		positionIndex = 0
+
+func backtrack():					# TODO: There is a bug in here somewhere.
+	positionIndex -= 1
+	if (positionIndex < 0):
+		positionIndex = POSITION_SPACE
+	if (positionIndex == stoppingIndex):
+		isBackTracking = false
+		return
+	global_transform.origin = positionHistory[positionIndex]
 
 func _physics_process(delta):
+	if (isPaused):
+		return
+	if (isShipMoving()):
+		updatePositionHistory()
+	else:
+		backtrack()
+		return
 	# TODO MAKE MOVEMENT RELATIVE TO SHIP
-	if Input.is_action_just_pressed("fireLeft"):
+	if (Input.is_action_just_pressed("fireLeft") && ammoCount > 0):
 		emit_signal("fire_left")
-	if Input.is_action_just_pressed("fireRight"):
+		ammoCount -= 1
+		emit_signal("update_ammo_count", ammoCount)
+	if Input.is_action_just_pressed("fireRight") && ammoCount > 0:
 		emit_signal("fire_right")
+		ammoCount -= 1
+		emit_signal("update_ammo_count", ammoCount)
 	# We create a local variable to store the input direction.
 	var direction = Vector3.ZERO
 
@@ -86,3 +146,16 @@ func _physics_process(delta):
 			_on_playerShip_body_entered(self)
 	
 
+func _on_level_gui_player_lost(hit_count):
+	isPaused = true
+
+func _on_level_end_body_entered(body):
+	if (body.is_in_group("Player")):
+		isPaused = true
+
+func reset():
+	positionIndex = POSITION_SPACE
+	stoppingIndex = 0
+	positionHistory = PoolVector3Array()
+	isPaused = false
+	ammoCount = startingAmmoCount

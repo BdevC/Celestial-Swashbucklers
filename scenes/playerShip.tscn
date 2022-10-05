@@ -289,118 +289,80 @@ shape = SubResource( 20 )
 
 [node name="ship_dark_8angles2" type="MeshInstance" parent="."]
 mesh = SubResource( 11 )
-material/0 = null
-material/1 = null
-material/2 = null
-material/3 = null
-material/4 = null
 
 [node name="cannon_front" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.66294e-15, 1.43707, -3.61593 )
 mesh = SubResource( 12 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_front2" type="MeshInstance" parent="ship_dark_8angles2/cannon_front"]
 transform = Transform( 1, 0, 0, 0, 0.997314, -0.0732382, 0, 0.0732382, 0.997314, -1.44382e-15, 0.277633, -0.0673608 )
 mesh = SubResource( 13 )
-material/0 = null
 
 [node name="cannon_left" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.03421, 1.2774, -1.68106 )
 visible = false
 mesh = SubResource( 14 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_left2" type="MeshInstance" parent="ship_dark_8angles2/cannon_left"]
 transform = Transform( 1, -1.26218e-29, -2.01085e-28, -6.00653e-30, 0.995725, -0.0923706, 2.01391e-28, 0.0923706, 0.995725, -2.88765e-15, 0.443968, -0.0674684 )
 mesh = SubResource( 13 )
-material/0 = null
 
 [node name="cannon_left3" type="MeshInstance" parent="ship_dark_8angles2/cannon_left"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217236, 0.1284, 0.262179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_left4" type="MeshInstance" parent="ship_dark_8angles2/cannon_left"]
 transform = Transform( -1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, -1, 0.217236, 0.1284, 0.262179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_left5" type="MeshInstance" parent="ship_dark_8angles2/cannon_left"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217236, 0.1284, -0.197179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_left6" type="MeshInstance" parent="ship_dark_8angles2/cannon_left"]
 transform = Transform( -1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, -1, 0.217236, 0.1284, -0.197179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_right" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.03759, 1.2774, -1.68106 )
 visible = false
 mesh = SubResource( 14 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_right2" type="MeshInstance" parent="ship_dark_8angles2/cannon_right"]
 transform = Transform( 1, -1.26218e-29, -2.01085e-28, -6.00653e-30, 0.995725, -0.0923706, 2.01391e-28, 0.0923706, 0.995725, -2.88765e-15, 0.443968, -0.0674684 )
 mesh = SubResource( 13 )
-material/0 = null
 
 [node name="cannon_right3" type="MeshInstance" parent="ship_dark_8angles2/cannon_right"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217236, 0.1284, 0.262179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_right4" type="MeshInstance" parent="ship_dark_8angles2/cannon_right"]
 transform = Transform( -1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, -1, 0.217236, 0.1284, 0.262179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_right5" type="MeshInstance" parent="ship_dark_8angles2/cannon_right"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217236, 0.1284, -0.197179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="cannon_right6" type="MeshInstance" parent="ship_dark_8angles2/cannon_right"]
 transform = Transform( -1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, -1, 0.217236, 0.1284, -0.197179 )
 mesh = SubResource( 15 )
-material/0 = null
-material/1 = null
 
 [node name="sail_back" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35384, 3.03425, 1.8644 )
 mesh = SubResource( 16 )
-material/0 = null
-material/1 = null
 
 [node name="sail_front" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35384, 1.60425, -3.2006 )
 mesh = SubResource( 17 )
-material/0 = null
-material/1 = null
 
 [node name="sail_middle" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35384, 1.60425, -1.5456 )
 mesh = SubResource( 18 )
-material/0 = null
-material/1 = null
 
 [node name="steering" type="MeshInstance" parent="ship_dark_8angles2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88765e-15, 2.77592, 1.05056 )
 mesh = SubResource( 19 )
-material/0 = null
-material/1 = null
 
 [node name="port_cannon" parent="." instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0334, 1.27572, -1.68415 )
@@ -412,6 +374,11 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.04615
 transform = Transform( 0.333333, 0, 0, 0, 0.086273, 0.321975, 0, -0.321975, 0.086273, 2.72223e-06, 26.2165, -0.505283 )
 current = true
 far = 1000.0
+
+[node name="safeTimer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+one_shot = true
 
 [connection signal="fire_left" from="." to="port_cannon" method="_on_playerShip_fire_left"]
 [connection signal="fire_right" from="." to="starboard_cannon" method="_on_playerShip_fire_right"]
