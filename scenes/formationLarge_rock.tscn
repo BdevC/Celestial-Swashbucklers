@@ -55,8 +55,6 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 0.77, 0, 0, 0, 1, 0.704817, 2.05745e-14, -0.354503 )
 portal_mode = 4
 mesh = SubResource( 1 )
-material/0 = null
-material/1 = null
 
 [node name="CollisionShape4" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.77, 0, 0, 0, 1, 0.704817, 2.05745e-14, -0.354503 )

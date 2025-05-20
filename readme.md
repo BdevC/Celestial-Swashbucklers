@@ -1,11 +1,15 @@
- Project created with Godot_v3.4.4-stable_x11.64.zip
-    https://downloads.tuxfamily.org/godotengine/3.4.4/
+Project created with Godot_v3.5.3-stable_x11.64.zip
+- https://godotengine.org/download/archive/3.5.3-stable/
 
-#### Getting Started ####
-1. Download the linked exe
-2. Run the exe 
-3. Click import
-4. Browse to the cloned repo 
-5. Select project.godot 
-6. Click "import & Edit"
+## Project Goals ##
+- [X] Create an original, functional MVP over 12 weeks
+- [X] Work with a veteran game developer to learn key concepts and ideas involved in publishing a game
+- [X] Discuss solutions to common problems in game development
+- [X] Understand the fundamentals of the publishing process
+
+## How to Play this game ## 
+- Download an executable from the release page
+- Play the game on Pages
+
+
  

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://art/materials/_defaultMat.material" type="Material" id=1]
 [ext_resource path="res://art/materials/window.material" type="Material" id=2]
@@ -7,9 +7,15 @@
 [ext_resource path="res://art/materials/woodDark.material" type="Material" id=5]
 [ext_resource path="res://art/materials/wood.material" type="Material" id=6]
 [ext_resource path="res://scenes/player/Cannon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sound/sfx/impactPlank_medium_001.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sound/sfx/thrusterFire_000.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sound/sfx/health_pickup.ogg" type="AudioStream" id=10]
+[ext_resource path="res://sound/sfx/speed_boost_pickup.ogg" type="AudioStream" id=11]
+[ext_resource path="res://sound/sfx/ammo_pickup.ogg" type="AudioStream" id=12]
+[ext_resource path="res://sound/sfx/boost_sound.ogg" type="AudioStream" id=13]
 
-[sub_resource type="ConvexPolygonShape" id=20]
-points = PoolVector3Array( -0.00027895, -1.80478e-16, -1.91769, 0.284294, -1.80478e-16, -1.76075, -0.284573, -1.80478e-16, -1.76075, -0.00027895, 0.478638, -3.15737, 0.649775, -1.80478e-16, -1.18054, 0.473731, 0.478638, -2.89501, 1.08305, 0.478638, -1.92879, -0.650054, -1.80478e-16, -1.18054, -1.08333, 0.478638, -1.92879, -0.47401, 0.478638, -2.89501, -0.0901147, 1.53651, -4.84965, 0.0898359, 1.53651, -4.84965, 0.649775, -1.80478e-16, 2.16042, 0.62355, 1.11746, -3.65673, 1.42482, 1.11746, -2.38534, 1.08305, 0.478638, 2.16042, -0.650054, -1.80478e-16, 2.16042, -1.4251, 1.11746, -2.38534, -0.623829, 1.11746, -3.65673, -1.08333, 0.478638, 2.16042, -0.0901147, 1.65121, -4.84965, 0.0898359, 1.65121, -4.84965, 1.42482, 1.11746, 2.79929, 1.35368, 1.59674, -2.29023, 1.35368, 2.79302, 0.940555, 1.35368, 3.03778, 3.03945, -1.4251, 1.11746, 2.79929, -1.35395, 1.59674, -2.29023, -1.35395, 3.03778, 3.03945, -1.35395, 2.79302, 0.940555, -0.0111597, 4.46409, -2.57637, -0.00027895, 4.46409, -2.57796, -0.0368271, 4.46409, -2.55655, -0.0301312, 4.46409, -2.56527, -0.0214825, 4.46409, -2.57241, 0.0108808, 4.46409, -2.57637, 0.0212035, 4.46409, -2.57241, 0.0298524, 4.46409, -2.56527, 0.0365481, 4.46409, -2.55655, 1.35368, 3.03778, 3.19877, 1.35368, 2.31438, 3.19877, 0.041012, 4.46409, -2.54625, 0.367992, 5.18108, -1.06323, 0.410399, 5.18108, -0.960186, 0.424907, 5.18108, -0.850802, 0.042407, 6.54587, 2.54643, -1.27416, 2.31438, 3.19877, -1.35395, 2.31438, 3.11951, -1.35395, 3.03778, 3.11951, -0.425186, 5.18108, -0.850802, -0.410678, 5.18108, -0.960186, -0.368271, 5.18108, -1.06323, -0.0412909, 4.46409, -2.54625, -0.0426859, 6.54587, 2.54643, -0.00836968, 5.9205, -0.881715, -0.00027895, 5.9205, -0.882507, 0.00809085, 5.9205, -0.881715, -0.0278993, 5.9205, -0.866654, -0.0228773, 5.9205, -0.872996, -0.0161816, 5.9205, -0.878544, 0.0159026, 5.9205, -0.878544, 0.0225985, 5.9205, -0.872996, 0.0276204, 5.9205, -0.866654, 0.0181346, 6.50038, 3.18054, 0.0164607, 6.50038, 3.1956, 0.0136708, 6.50038, 3.20987, 0.0100439, 6.50038, 3.22414, 0.005301, 6.50038, 3.23603, -0.00027895, 6.50038, 3.24792, -0.00027895, 6.11145, 3.24792, 0.0309683, 5.9205, -0.858728, 0.0320843, 5.9205, -0.850802, 0.041012, 6.54587, 2.53613, 0.041012, 6.54587, 2.55753, -1.27416, 3.03778, 3.19877, -0.0225984, 6.50038, 3.00062, -0.0323632, 5.9205, -0.850802, -0.0312471, 5.9205, -0.858728, -0.0412909, 6.54587, 2.55753, -0.0412909, 6.54587, 2.53613, -0.0214825, 6.54587, 2.50997, -0.0111597, 6.54587, 2.50601, -0.00027895, 6.54587, 2.50443, 0.0108808, 6.54587, 2.50601, 0.0212035, 6.54587, 2.50997, -0.0368271, 6.54587, 2.52583, -0.0301312, 6.54587, 2.51711, 0.0298524, 6.54587, 2.51711, 0.0365481, 6.54587, 2.52583, 0.0365481, 6.54587, 2.56784, 0.0298524, 6.54587, 2.57656, 0.0212035, 6.54587, 2.58369, 0.0108808, 6.54587, 2.58765, -0.00027895, 6.54587, 2.58924, -0.0111597, 6.54587, 2.58765, -0.0214825, 6.54587, 2.58369, -0.0301312, 6.54587, 2.57656, -0.0368271, 6.54587, 2.56784 )
+[sub_resource type="BoxShape" id=22]
+extents = Vector3( 1.37737, 1, 3.23316 )
 
 [sub_resource type="ArrayMesh" id=11]
 resource_name = "ship_dark_ship_dark_8angles"
@@ -278,16 +284,42 @@ surfaces/1 = {
 "vertex_count": 1984
 }
 
-[node name="playerShip" type="KinematicBody" groups=["Player"]]
-pause_mode = 2
+[sub_resource type="Curve3D" id=21]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -16.0613, 0, 0.070661, -16.1373, 0, 0.0263691, 16.1373, 0, -0.0263691, 0, 0, 16, 0, 0, 0, 0, 0, 0, 15.9261, 0, 0.070661 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=23]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -14, 0, 0, -13, 0, 0, 13, 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 0, 14, 0, 0 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=24]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -12, 0, 0, -11, 0, 0, 11, 0, 0, 0.0727291, 0, 11.8062, 0, 0, 0, 0, 0, 0, 12, 0, 0 ),
+"tilts": PoolRealArray( 0, 0, 0 )
+}
+
+[node name="playerShip" type="RigidBody" groups=["Player"]]
 collision_layer = 257
 collision_mask = 257
+mass = 10.0
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
 script = ExtResource( 3 )
+MAX_ANGULAR_VELOCITY = 0.5
 
 [node name="hull" type="CollisionShape" parent="."]
-shape = SubResource( 20 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3.13794, -2.35346 )
+shape = SubResource( 22 )
 
 [node name="ship_dark_8angles2" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 mesh = SubResource( 11 )
 
 [node name="cannon_front" type="MeshInstance" parent="ship_dark_8angles2"]
@@ -365,20 +397,98 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.88765e-15, 2.77592, 1.05056
 mesh = SubResource( 19 )
 
 [node name="port_cannon" parent="." instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0334, 1.27572, -1.68415 )
+transform = Transform( -1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -3.27806, 3.6132, -2.59681 )
 
 [node name="starboard_cannon" parent="." instance=ExtResource( 7 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.04615, 1.27444, -1.68542 )
+transform = Transform( -1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.32988, 3.73338, -2.69315 )
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.333333, 0, 0, 0, 0.086273, 0.321975, 0, -0.321975, 0.086273, 2.72223e-06, 26.2165, -0.505283 )
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 113.55, 33.257 )
 current = true
-far = 1000.0
+far = 1200.0
 
 [node name="safeTimer" type="Timer" parent="."]
 process_mode = 0
 wait_time = 0.5
 one_shot = true
 
-[connection signal="fire_left" from="." to="port_cannon" method="_on_playerShip_fire_left"]
-[connection signal="fire_right" from="." to="starboard_cannon" method="_on_playerShip_fire_right"]
+[node name="lost_ammo_cannon" parent="." instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 0.776457, -2.89778, 0, 2.89778, 0.776457, 0, 20.0788, 0 )
+visible = false
+fire_speed = 1000
+
+[node name="catch_the_ammo_txt" type="Label3D" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.70841, -12.5529 )
+visible = false
+pixel_size = 0.1
+text = "QUICK! CATCH THE AMMO!"
+
+[node name="dodge_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="forward_cannon" parent="." instance=ExtResource( 7 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 3.80525, -14.5783 )
+visible = false
+
+[node name="health_path" type="Path" parent="."]
+curve = SubResource( 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_follow" type="PathFollow" parent="health_path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0613, 0, 0.070661 )
+
+[node name="player_hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="player_move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -15.0
+
+[node name="health_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="boost_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="ammo_pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="ammo_path" type="Path" parent="."]
+curve = SubResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ammo_follow" type="PathFollow" parent="ammo_path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0 )
+
+[node name="boost_path" type="Path" parent="."]
+curve = SubResource( 24 )
+
+[node name="boost_follow" type="PathFollow" parent="boost_path"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0 )
+
+[node name="use_boost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="fighter_locations" type="Spatial" parent="."]
+
+[node name="Position3D" type="Position3D" parent="fighter_locations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -200 )
+
+[node name="Position3D2" type="Position3D" parent="fighter_locations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -200 )
+
+[node name="Position3D3" type="Position3D" parent="fighter_locations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100 )
+
+[node name="Position3D4" type="Position3D" parent="fighter_locations"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 100 )
+
+[node name="fleet_timer" type="Timer" parent="."]
+one_shot = true

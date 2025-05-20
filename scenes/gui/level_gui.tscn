@@ -1,16 +1,19 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/gui/youwin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui/level_gui.gd" type="Script" id=2]
 [ext_resource path="res://art/fonts/AmmoDataFont.tres" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/gui/youlose.tscn" type="PackedScene" id=4]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://art/fonts/Ubuntu-R.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 31
-font_data = SubResource( 1 )
+[ext_resource path="res://art/themes/basicTheme.tres" type="Theme" id=5]
+[ext_resource path="res://sound/sfx/open_menu.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sound/sfx/close_menu.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sound/sfx/count_even.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sound/sfx/count_odd.ogg" type="AudioStream" id=9]
+[ext_resource path="res://scenes/gui/compass.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gui/end_of_level.tscn" type="PackedScene" id=11]
+[ext_resource path="res://sound/music/end_of_level.wav" type="AudioStream" id=12]
+[ext_resource path="res://scenes/gui/score.tscn" type="PackedScene" id=13]
+[ext_resource path="res://sound/intro.wav" type="AudioStream" id=14]
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
@@ -20,34 +23,33 @@ font_data = ExtResource( 3 )
 size = 24
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://art/fonts/Ubuntu-R.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 31
+font_data = SubResource( 1 )
+
 [node name="level_gui" type="Control"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 
+[node name="end_of_level" parent="." instance=ExtResource( 11 )]
+physics_interpolation_mode = 2
+mouse_filter = 1
+
+[node name="eol_music" type="AudioStreamPlayer" parent="end_of_level"]
+pause_mode = 2
+stream = ExtResource( 12 )
+
 [node name="you_win" parent="." instance=ExtResource( 1 )]
-
-[node name="healthbar" type="ProgressBar" parent="."]
-margin_left = 40.0
-margin_top = 49.0
-margin_right = 216.0
-margin_bottom = 63.0
-custom_colors/font_color = Color( 0.596078, 0.960784, 0.113725, 1 )
-max_value = 8.0
-step = 1.0
-value = 8.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="healthlabel" type="Label" parent="healthbar"]
-margin_top = -35.0
-margin_right = 223.0
-margin_bottom = 15.0
-custom_fonts/font = SubResource( 2 )
-text = "Health"
+visible = false
+popup_exclusive = true
 
 [node name="ammoCountLabel" type="Label" parent="."]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -222.0
@@ -58,6 +60,7 @@ custom_fonts/font = SubResource( 3 )
 text = "Ammo count"
 
 [node name="ammoCountNumber" type="Label" parent="ammoCountLabel"]
+visible = false
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = 3.0
@@ -67,9 +70,98 @@ custom_fonts/font = SubResource( 4 )
 text = "0xA"
 
 [node name="you_lose" parent="." instance=ExtResource( 4 )]
+visible = false
+popup_exclusive = true
+
+[node name="PauseMenu" type="PopupMenu" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+popup_exclusive = true
+items = [ "Exit Game", null, 2, false, false, 0, 0, null, "", false, "", null, 0, false, true, 1, 0, null, "", true, "Keep Playing", null, 2, false, false, 2, 0, null, "", false ]
+
+[node name="instruction_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="introduction" type="PopupPanel" parent="."]
+visible = true
+anchor_left = 0.058
+anchor_top = 0.109
+anchor_right = 0.921
+anchor_bottom = 0.927
+popup_exclusive = true
+
+[node name="voiceover" type="AudioStreamPlayer" parent="introduction"]
+stream = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="introduction"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -437.856
+margin_top = -241.4
+margin_right = 437.856
+margin_bottom = 241.4
+text = "We made it through THE GATE.  We only have a few minutes before the fleet appears.  The timer in the top left of the screen will show how long we have until the fleet arrives.  Our goal is to collect the treasure on the other side of the level and as much gold as we can.   The compass at the top right of the screen shows what direction we need to travel to reach the treasure cache or the gate.  Going back through the gate will end the level, wheather the fleet is here yet or not. 
+MOVEMENT:
+WASD: Move latterally up,left,down,right
+Shift + WAS or D: boost latterally
+Q and E : rotate left or right
+left click: fire left cannon 			
+space: fire forward cannon
+right click: fire right cannon
+
+The capsules below the ship represent health(red), ammo (white) and boosts (blue)"
+autowrap = true
+
+[node name="Button" type="Button" parent="introduction/Label"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.0
+margin_top = -162.0
+margin_right = 51.0
+margin_bottom = -69.0
+theme = ExtResource( 5 )
+text = "OK"
+
+[node name="open_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+
+[node name="close_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.0
+
+[node name="fleet_timer" type="Label" parent="."]
+margin_left = 40.0
+margin_top = 14.0
+margin_right = 263.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="count_even" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="count_odd" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="compass" parent="." instance=ExtResource( 10 )]
+anchor_left = 1.0
+anchor_bottom = 0.0
+margin_left = -1024.0
+margin_bottom = 600.0
+
+[node name="score_treasure" parent="." instance=ExtResource( 13 )]
 
 [connection signal="end_of_level" from="." to="you_win" method="_on_level_gui_end_of_level"]
 [connection signal="player_lost" from="." to="you_lose" method="_on_level_gui_player_lost"]
 [connection signal="yes" from="you_win" to="." method="_on_you_win_yes"]
-[connection signal="value_changed" from="healthbar" to="." method="_on_healthbar_value_changed"]
 [connection signal="yes" from="you_lose" to="." method="_on_you_lose_yes"]
+[connection signal="index_pressed" from="PauseMenu" to="." method="_on_PauseMenu_index_pressed"]

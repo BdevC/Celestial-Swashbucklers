@@ -15,7 +15,8 @@ export var speed:float = 2000.0
 func _ready():
 	var forward_direction = global_transform.basis.z.normalized()
 	add_central_force(forward_direction * speed)
-
+	add_to_group("playerAmmo")
+	print("connecting cannon ball body entered to on_something_hit: ", connect("body_entered",self, "_on_hitSomething"))
 #func _physics_process(delta):
 #	var forward_direction = global_transform.basis.z.normalized()
 #	add_central_force(forward_direction * speed * delta)
@@ -48,3 +49,9 @@ func _ready():
 
 func _on_Timer_timeout():
 	queue_free()
+
+func _on_hitSomething(body):
+	if body.is_in_group("Player"):
+		body.add_ammo(1)
+		queue_free()
+	pass

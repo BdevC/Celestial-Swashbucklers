@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/player/cannonball.gd" type="Script" id=2]
 
 [sub_resource type="SphereShape" id=1]
-radius = 0.5
+radius = 0.252
 
 [sub_resource type="SphereMesh" id=2]
 material = ExtResource( 1 )
@@ -14,7 +14,6 @@ height = 0.5
 [node name="cannonball" type="RigidBody"]
 collision_layer = 256
 collision_mask = 256
-axis_lock_linear_y = true
 script = ExtResource( 2 )
 speed = 3000.0
 
@@ -24,7 +23,6 @@ shape = SubResource( 1 )
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
 skeleton = NodePath("../../..")
-material/0 = null
 
 [node name="Timer" type="Timer" parent="."]
 process_mode = 0

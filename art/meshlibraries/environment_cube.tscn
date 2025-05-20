@@ -1,0 +1,76 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://art/materials/stars.png" type="Texture" id=1]
+[ext_resource path="res://art/models/environment/rock_010.material" type="Material" id=2]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="CubeMesh" id=1]
+material = SubResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.615686, 0.960784, 0.988235, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.121569, 0.0901961, 1, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 1, 0.835294, 0.431373, 1 )
+
+[sub_resource type="CubeMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.294118, 0.584314, 0.305882, 1 )
+
+[sub_resource type="CubeMesh" id=10]
+material = SubResource( 9 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.776471, 0.878431, 0.882353, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+
+[sub_resource type="CubeMesh" id=13]
+material = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.784314, 0, 0, 1 )
+
+[sub_resource type="CubeMesh" id=15]
+material = SubResource( 14 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="space" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="sky" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+
+[node name="water" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+
+[node name="sand" type="MeshInstance" parent="."]
+mesh = SubResource( 8 )
+
+[node name="grass" type="MeshInstance" parent="."]
+mesh = SubResource( 10 )
+
+[node name="ice" type="MeshInstance" parent="."]
+mesh = SubResource( 12 )
+
+[node name="rock" type="MeshInstance" parent="."]
+mesh = SubResource( 13 )
+skeleton = NodePath("../ice")
+
+[node name="lava" type="MeshInstance" parent="."]
+mesh = SubResource( 15 )
