@@ -14,5 +14,9 @@ Project created with Godot_v3.5.3-stable_x11.64.zip
 - Download an executable from the release page
 - Play the game on Pages
 
-
+### Some lessons learned through and after this project ###
+- Don't just start with the end in mind, start at the end with CI/CD
+  - This will make distribution much easier
+  - Keeps devs focused on work
+- Use git large file storage
  
