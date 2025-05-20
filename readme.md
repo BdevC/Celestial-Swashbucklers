@@ -1,5 +1,5 @@
 ### THIS IS A DEAD PROJECT ###
-- But you can [see it in action on the wiki!](https://github.com/BdevC/Celestial-Swashbucklers/wiki/Playthrough)
+- But you can [see it in action HERE!](https://drive.google.com/file/d/1Ji-fDJYG9HbCzAlP_H17ZIs6IGnfE84Y/view?usp=sharing)
 
 Project created with Godot_v3.5.3-stable_x11.64.zip
 - https://godotengine.org/download/archive/3.5.3-stable/
