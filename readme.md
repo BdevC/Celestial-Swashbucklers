@@ -1,3 +1,6 @@
+### THIS IS A DEAD PROJECT ###
+- But you can see it in action on the wiki!
+
 Project created with Godot_v3.5.3-stable_x11.64.zip
 - https://godotengine.org/download/archive/3.5.3-stable/
 
